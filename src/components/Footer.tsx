@@ -6,7 +6,7 @@ export function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-[#001524] text-white z-50">
+    <footer className="w-full bg-[#001524] text-white z-50">
       <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Company Logo */}

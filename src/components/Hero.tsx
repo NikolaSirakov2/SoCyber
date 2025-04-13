@@ -20,7 +20,7 @@ const stats = [
 
 export function Hero() {
   return (
-    <div className="w-full min-h-screen bg-blue-900 flex items-center">
+    <div className="w-full min-h-screen bg-[#001f35] flex items-center">
       <div className="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Left Column - Text Content */}
         <div className="space-y-8">

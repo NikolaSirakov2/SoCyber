@@ -2,6 +2,7 @@ import "./App.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
+import { TrustedBy } from "@/components/TrustedBy";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -14,6 +15,7 @@ function App() {
         <Navbar />
         <main className="flex-1 w-full">
           <Hero />
+          <TrustedBy />
         </main>
         <Footer />
       </div>
