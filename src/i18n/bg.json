@@ -1,0 +1,13 @@
+{
+  "navigation": {
+    "home": "НАЧАЛО",
+    "company": "КОМПАНИЯ",
+    "services": "УСЛУГИ",
+    "customers": "КЛИЕНТИ",
+    "blog": "БЛОГ",
+    "bookCall": "Запазете час"
+  },
+  "home": {
+    "welcome": "Добре дошли в SoCyber"
+  }
+} 

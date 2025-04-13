@@ -1,0 +1,13 @@
+{
+  "navigation": {
+    "home": "HOME",
+    "company": "COMPANY",
+    "services": "SERVICES",
+    "customers": "CUSTOMERS",
+    "blog": "BLOG",
+    "bookCall": "Book a Call"
+  },
+  "home": {
+    "welcome": "Welcome to SoCyber"
+  }
+} 
