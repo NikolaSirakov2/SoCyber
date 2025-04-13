@@ -9,5 +9,12 @@
   },
   "home": {
     "welcome": "Welcome to SoCyber"
+  },
+  "footer": {
+    "links": {
+      "dataPrivacy": "Data privacy",
+      "termsOfUse": "Terms of use",
+      "faq": "FAQ"
+    }
   }
 } 
