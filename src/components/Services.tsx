@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Check } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const services = [
   {
@@ -229,8 +229,36 @@ const services = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
 export function Services() {
   const [expandedScopes, setExpandedScopes] = useState<Set<string>>(new Set());
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const toggleScope = (title: string) => {
     setExpandedScopes((prev) => {
@@ -247,16 +275,20 @@ export function Services() {
   return (
     <section className="w-full bg-[#001f35] py-16">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, index) => {
+        <motion.div
+          ref={ref}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {services.map((service) => {
             const isExpanded = expandedScopes.has(service.title);
 
             return (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                variants={cardVariants}
                 className="bg-black bg-opacity-50 rounded-xl p-6"
                 style={{ height: "fit-content" }}
               >
@@ -291,7 +323,7 @@ export function Services() {
 
                   <button
                     onClick={() => toggleScope(service.title)}
-                    className="text-white bg-transparent text-sm mt-auto self-start"
+                    className="text-white text-sm mt-auto self-start bg-transparent border-0"
                   >
                     {isExpanded ? "− Scope" : "+ Scope"}
                   </button>
@@ -299,7 +331,7 @@ export function Services() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
