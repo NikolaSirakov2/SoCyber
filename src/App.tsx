@@ -7,7 +7,8 @@ import { Certifications } from "@/components/Certifications";
 import { Services } from "@/components/Services";
 import { Media } from "@/components/Media";
 import { CallToAction } from "@/components/CallToAction";
-import { BrowserRouter as Router } from "react-router-dom";
+import { ContactPage } from "@/pages/ContactPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 function App() {
@@ -18,12 +19,22 @@ function App() {
       <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
         <Navbar />
         <main className="flex-1 w-full">
-          <Hero />
-          <TrustedBy />
-          <Certifications />
-          <Services />
-          <Media />
-          <CallToAction />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero />
+                  <TrustedBy />
+                  <Certifications />
+                  <Services />
+                  <Media />
+                  <CallToAction />
+                </>
+              }
+            />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
         </main>
         <Footer />
       </div>

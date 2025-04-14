@@ -76,7 +76,7 @@ export function Navbar() {
               asChild
               className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-transparent hover:from-blue-600 hover:to-blue-700 rounded-full px-6 font-medium shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2"
             >
-              <Link to="/book-call">
+              <Link to="/contact">
                 <Phone className="h-4 w-4" />
                 <span>{t("navigation.bookCall")}</span>
               </Link>
