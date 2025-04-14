@@ -6,6 +6,7 @@ import { TrustedBy } from "@/components/TrustedBy";
 import { Certifications } from "@/components/Certifications";
 import { Services } from "@/components/Services";
 import { Media } from "@/components/Media";
+import { CallToAction } from "@/components/CallToAction";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -22,6 +23,7 @@ function App() {
           <Certifications />
           <Services />
           <Media />
+          <CallToAction />
         </main>
         <Footer />
       </div>
