@@ -39,7 +39,7 @@ export function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#001524] text-white py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#274255] text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Column - Content */}
@@ -178,22 +178,6 @@ export function ContactPage() {
                   className="w-full p-3 bg-[#0A2540] rounded border border-gray-700 focus:border-[#4FD1C5] focus:ring-1 focus:ring-[#4FD1C5]"
                   required
                 />
-              </div>
-
-              <div className="flex items-start gap-2">
-                <input
-                  type="checkbox"
-                  id="consent"
-                  name="consent"
-                  checked={formData.consent}
-                  onChange={handleChange}
-                  className="mt-1"
-                  required
-                />
-                <label htmlFor="consent" className="text-sm">
-                  Yes, I give consent for SoCyber Inc. to store and process my
-                  data*
-                </label>
               </div>
 
               <div className="flex items-center gap-2 text-sm text-gray-400">
