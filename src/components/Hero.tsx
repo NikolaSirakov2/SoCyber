@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { FormEvent, useState } from "react";
 
 const services = [
   { name: "Penetration testing", id: 1 },
@@ -19,6 +20,36 @@ const stats = [
 ];
 
 export function Hero() {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
+
+      setEmail("");
+      alert("Quote request sent successfully!");
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      alert("Failed to send quote request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <div className="w-full min-h-screen bg-[#001f35] flex items-center">
       <div className="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -91,26 +122,23 @@ export function Hero() {
               ))}
             </div>
 
-            <form className="space-y-4">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all"
-                />
-              </div>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
                 <input
                   type="email"
                   placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-teal-500 text-white py-3 px-6 rounded-lg font-medium hover:bg-teal-600 transition-colors"
+                disabled={isSubmitting}
+                className="w-full bg-teal-500 text-white py-3 px-6 rounded-lg font-medium hover:bg-teal-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Get Quote
+                {isSubmitting ? "Sending..." : "Get Quote"}
               </button>
             </form>
           </div>
